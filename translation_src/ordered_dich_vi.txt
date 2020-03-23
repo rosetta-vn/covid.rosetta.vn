@@ -1,0 +1,65 @@
+﻿Mô phỏng này sử dụng mô hình bệnh truyền nhiễm cổ điển &mdash <b><a href="https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SEIR_model#The_SEIR_model">SEIR</a></b> (<b>S</b>usceptible → <span style="color:{colors[4]}"><b>E</b></span>xposed → <span style="color:{colors[3]}"><b>I</b></span>nfected → <span><b>R</b></span>emoved), một mô hình lan truyền lý tưởng hóa vẫn được sử dụng trong tuyến đầu của nghiên cứu, ví dụ [<a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30260-9/fulltext"> Wu, et. al </a>, <a href = "https://cmmid.github.io/topics/covid19/current-patterns-transmission/wuhan-early-dynamics.html"> Kucharski et. al </a>]. Động lực của mô hình này được đặc trưng bởi một bộ bốn phương trình vi phân tương ứng với các giai đoạn tiến triển của bệnh:
+Động lực lâm sàng trong mô hình này là một biến thể của SEIR nhằm mô phỏng sự tiến triển của dịch ở độ phân giải cao hơn, chia {@html math_inline("I,R")} thành <i>nhẹ</i> (bệnh nhân hồi phục mà không cần nhập viện), <i>vừa</i> (bệnh nhân cần nhập viện nhưng vẫn sống sót) và <i>tử vong</i> (bệnh nhân cần nhập viện và vẫn chết). Mỗi biến này đi theo quỹ đạo riêng của nó đến kết quả cuối cùng, và tổng của chúng cộng lại bằng với giá trị do SEIR dự đoán. Vui lòng tham khảo mã nguồn để biết chi tiết. Lưu ý là để đơn giản hóa, chúng tôi coi như tất cả các trường hợp tử vong đều đến từ các bệnh viện, và tất cả các trường hợp tử vong đều được đưa vào bệnh viện ngay sau thời kỳ lây nhiễm. (thực tế có khác: một số người có thể chết mà bệnh viện chưa kịp chữa cho họ)
+Lưu ý rằng ta cũng có thể sử dụng mô phỏng này để đo lường mức độ rủi ro của một người đối với căn bệnh này trong bất kỳ ngày nào của dịch bệnh: xác suất bị nhiễm bệnh vào ngày {Math.round(indexToTime(active_))} khi có <a href="https://www.cdc.gov/coronavirus/2019-ncov/hcp/guidance-risk-assesment-hcp.html">tiếp xúc gần</a> với <input type="text" style="width:{Math.ceil(Math.log10(p_num_ind))*9.5 + 5}px; font-size: 15.5px; color:#777" bind:value={p_num_ind}> người khác là {((1-(Math.pow(1 - (Iters[active_][2])*(0.45/100), p_num_ind)))*100).toFixed(5)}%, với giả sử tỷ lệ tấn công là 0.45% [<a href="https://www.cdc.gov/mmwr/volumes/69/wr/mm6909e1.htm?s_cid=mm6909e1_w">Burke et. al</a>].
+Xem [<a href="https://academic.oup.com/jtm/article/27/2/taaa021/5735319"> Liu et. al </a>] khảo sát chi tiết các ước tính hiện tại về hệ số lây lan. Các thông số về đặc điểm lâm sàng của bệnh được lấy từ <a href="https://www.who.int/docs/default-source/coronaviruse/who-china-joint-mission-on-covid-19-final-report.pdf">Báo cáo của WHO</a>.
+Tại thời điểm làm công cụ mô phỏng này, dịch bệnh COVID-19 vẫn là một cuộc khủng hoảng sức khỏe toàn cầu nghiêm trọng và mức độ chưa rõ ràng. Đối với người không phải là chuyên gia (như bản thân tôi), việc sắp xếp các con số, các dự báo và các thông số dịch tễ học từ các phương tiện truyền thông và tài liệu có thể không đơn giản. Tôi (Gabriel Goh) đã tạo ra trang web mô phỏng này để thu hẹp khoảng cách hiểu biết đó.
+<a href = "https://enkimute.github.io/"> Steven De Keninck </a> cho hàm tính tích phân RK4. <a href="https://twitter.com/ch402"> Chris Olah </a>, <a href="https://twitter.com/shancarter"> Shan Carter
+Please DM me feedback <a href="https://twitter.com/gabeeegoooh">here</a> or email me <a href="mailto:izmegabe@gmail.com">here</a>. Trang <a href="http://gabgoh.github.io/">web của tôi</a>.
+Ngoài các động lực của sự lây truyền, mô hình này cho phép chỉnh thêm thông tin thời gian để mô hình hóa tỷ lệ tử vong và gánh nặng chăm sóc sức khỏe.
+Đo lường mức độ lây nhiễm: số lượng lây nhiễm thứ cấp mà mỗi cá nhân bị nhiễm bệnh tạo ra
+Một số kết quả ước tính cho các tham số dịch COVID-19 được trình bày dưới đây:
+</a> và <a href="https://twitter.com/ludwigschubert"> Ludwig Schubert
+</a> vì sự phản hồi tuyệt vời. Charlie Huang cho bối cảnh và thảo luận.
+Dân số không còn bị nhiễm do cách ly hoặc miễn dịch
+Số người <i>đang</i> mắc bệnh
+Thời gian từ sau khi ủ bệnh đến khi chết
+Dân số đang trong thời gian ủ bệnh
+Dân số chưa được miễn dịch
+Thời gian bệnh nhân gây lây nhiễm
+Số lượng người nhiễm ban đầu
+Thời gian phục hồi cho các ca nhiễm nhẹ
+để giảm sự truyền nhiễm đến mức
+Thời gian ủ bệnh
+Hệ số lây lan cơ bản
+Đang được điều trị
+Thời gian trước khi nhập viện
+Can thiệp vào ngày
+Thời gian nằm viện
+Động lực học của sự truyền nhiễm
+Tỷ lệ nhập viện
+Thống kê tỷ lệ mắc bệnh
+Mô phỏng dịch bệnh (bản gốc ở <a href="http://gabgoh.github.io/COVID/">gabgoh.github.io/COVID/</a>)
+Quy mô dân số
+Tỷ lệ tử vong
+Hệ số lây lan
+Thời gian truyền nhiễm
+Tham số được xuất:
+Động lực học lâm sàng
+Dân số ban đầu
+Thời gian ủ bệnh
+Thời gian gây lây nhiễm
+Khỏi bệnh hoàn toàn.
+nhập viện
+Cảm ơn các đóng góp
+Thống kê chăm sóc
+Thời gian phục hồi
+Chi tiết về mô hình
+Đang nhập viện
+thang đo tuyến tính
+Dễ mắc
+Ca chết đầu tiên
+Bị nhiễm
+Bị nhiễm
+Tử vong
+Phục hồi
+(kéo tôi)
+(tính theo ngày)
+Địa điểm
+Phơi nhiễm
+Đã xóa
+Số người chết
+Đỉnh điểm:
+/ ngày
+ngày
+ngày
+ngày

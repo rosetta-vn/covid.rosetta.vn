@@ -1,0 +1,64 @@
+Epidemic Calculator
+Day
+Susceptible
+/ day
+Population not immune to disease.
+Exposed
+Population currently in incubation.
+Infectious
+Number of infections actively circulating.
+Removed
+Population no longer infectious due to isolation or immunity.
+Recovered
+Full recoveries.
+Hospitalized
+Active hospitalizations.
+Fatalities
+Deaths.
+Intervention on day
+(drag me)
+to decrease transmission by
+First death
+Peak: 
+hospitalizations
+linear scale
+Transmission Dynamics
+Clinical Dynamics
+Population Inputs
+Size of population.
+Number of initial infections.
+Basic Reproduction Number
+Measure of contagiousness: the number of secondary infections each infected individual produces.
+Transmission Times
+Length of incubation period.
+days
+Duration patient is infectious
+Days
+Morbidity Statistics
+Case fatality rate.
+Time from end of incubation to death.
+Recovery Times
+Length of hospital stay
+Recovery time for mild cases
+Care statistics
+Hospitalization rate.
+Time to hospitalization.
+At the time of writing, the coronavirus disease of 2019 remains a global health crisis of grave and uncertain magnitude. To the non-expert (such as myself), contextualizing the numbers, forecasts and epidemiological parameters described in the media and literature can be challenging. I created this calculator as an attempt to address this gap in understanding.
+This calculator implements a classical infectious disease model &mdash <b><a href="https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SEIR_model">SEIR</a> </b>(<b>S</b>usceptible → <span style="color:{colors[4]}"><b>E</b></span>xposed → <span style="color:{colors[3]}"><b>I</b></span>nfected → <span><b>R</b></span>emoved), an idealized model of spread still used in frontlines of research e.g. [<a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30260-9/fulltext">Wu, et. al</a>, <a href = "https://cmmid.github.io/topics/covid19/current-patterns-transmission/wuhan-early-dynamics.html">Kucharski et. al</a>]. The dynamics of this model are characterized by a set of four ordinary differential equations that correspond to the stages of the disease's progression:
+In addition to the transmission dynamics, this model allows the use of supplemental timing information to model the death rate and healthcare burden.
+Note that one can use this calculator to measure one's risk exposure to the disease for any given day of the epidemic: the probability of getting infected on day {Math.round(indexToTime(active_))} given <a href="https://www.cdc.gov/coronavirus/2019-ncov/hcp/guidance-risk-assesment-hcp.html">close contact</a> with <input type="text" style="width:{Math.ceil(Math.log10(p_num_ind))*9.5 + 5}px; font-size: 15.5px; color:#777" bind:value={p_num_ind}> individuals is {((1-(Math.pow(1 - (Iters[active_][2])*(0.45/100), p_num_ind)))*100).toFixed(5)}% given an attack rate of 0.45% [<a href="https://www.cdc.gov/mmwr/volumes/69/wr/mm6909e1.htm?s_cid=mm6909e1_w">Burke et. al</a>].
+A sampling of the estimates for epidemic parameters are presented below:
+Location
+Reproduction Number
+Incubation Period
+(in days)
+Infectious Period
+See [<a href="https://academic.oup.com/jtm/advance-article/doi/10.1093/jtm/taaa021/5735319">Liu et. al</a>] detailed survey of current estimates of the reproduction number. Parameters for the diseases' clinical characteristics are taken from the following <a href="https://www.who.int/docs/default-source/coronaviruse/who-china-joint-mission-on-covid-19-final-report.pdf">WHO Report</a>.
+Please DM me feedback <a href="https://twitter.com/gabeeegoooh">here</a> or email me <a href="mailto:izmegabe@gmail.com">here</a>. My <a href="http://gabgoh.github.io/">website</a>.
+Model Details
+The clinical dynamics in this model are an elaboration on SEIR that simulates the disease's progression at a higher resolution, subdividing {@html math_inline("I,R")} into <i>mild</i> (patients who recover without the need for hospitalization), <i>moderate</i> (patients who require hospitalization but survive) and <i>fatal</i> (patients who require hospitalization and do not survive). Each of these variables follows its own trajectory to the final outcome, and the sum of these compartments add up to the values predicted by SEIR. Please refer to the source code for details. Note that we assume, for simplicity, that all fatalities come from hospitals, and that all fatal cases are admitted to hospitals immediately after the infectious period.
+Acknowledgements
+<a href = "https://enkimute.github.io/">Steven De Keninck</a> for RK4 Integrator. <a href="https://twitter.com/ch402">Chris Olah</a>, <a href="https://twitter.com/shancarter">Shan Carter
+</a> and <a href="https://twitter.com/ludwigschubert">Ludwig Schubert
+</a> wonderful feedback. Charlie Huang for context and discussion.
+Export parameters:
