@@ -19,7 +19,7 @@ Duration patient is infectious
 Number of initial infections.
 Recovery time for mild cases
 to decrease transmission by
-Length of incubation period.
+Length of incubation period
 Basic Reproduction Number
 Active hospitalizations.
 Time to hospitalization.

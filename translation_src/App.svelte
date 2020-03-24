@@ -949,7 +949,7 @@
 
     <div class="column">
       <div class="paneltitle">Thời gian truyền nhiễm</div>
-      <div class="paneldesc" style="height:30px">Length of incubation period, {@html math_inline("T_{\\text{inc}}")}.<br></div>
+      <div class="paneldesc" style="height:30px">Thời gian ủ bệnh, {@html math_inline("T_{\\text{inc}}")}.<br></div>
       <div class="slidertext">{(D_incbation).toFixed(2)} ngày</div>
       <input class="range" style="margin-bottom: 8px"type=range bind:value={D_incbation} min={0.15} max=24 step=0.0001>
       <div class="paneldesc" style="height:29px; border-top: 1px solid #EEE; padding-top: 10px">Thời gian bệnh nhân gây lây nhiễm, {@html math_inline("T_{\\text{inf}}")}.<br></div>
@@ -999,7 +999,7 @@ Tại thời điểm làm công cụ mô phỏng này, dịch bệnh COVID-19 v�
 </p>
 
 <p class = "center">
-﻿Mô phỏng này sử dụng mô hình bệnh truyền nhiễm cổ điển &mdash <b><a href="https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SEIR_model#The_SEIR_model">SEIR</a></b> (<b>S</b>usceptible → <span style="color:{colors[4]}"><b>E</b></span>xposed → <span style="color:{colors[3]}"><b>I</b></span>nfected → <span><b>R</b></span>emoved), một mô hình lan truyền lý tưởng hóa vẫn được sử dụng trong tuyến đầu của nghiên cứu, ví dụ [<a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30260-9/fulltext"> Wu, et. al </a>, <a href = "https://cmmid.github.io/topics/covid19/current-patterns-transmission/wuhan-early-dynamics.html"> Kucharski et. al </a>]. Động lực của mô hình này được đặc trưng bởi một bộ bốn phương trình vi phân tương ứng với các giai đoạn tiến triển của bệnh:
+﻿Mô phỏng này sử dụng mô hình bệnh truyền nhiễm cổ điển &mdash <b><a href="https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SEIR_model#The_SEIR_model">SEIR</a></b> (<b>S</b>usceptible → <span style="color:{colors[4]}"><b>E</b></span>xposed → <span style="color:{colors[3]}"><b>I</b></span>nfected → <span><b>R</b></span>emoved), một mô hình lan truyền lý tưởng hóa vẫn được sử dụng trong tuyến đầu của nghiên cứu, ví dụ [<a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30260-9/fulltext">Wu, et. al</a>, <a href = "https://cmmid.github.io/topics/covid19/current-patterns-transmission/wuhan-early-dynamics.html">Kucharski et. al</a>]. Động lực của mô hình này được đặc trưng bởi một bộ bốn phương trình vi phân tương ứng với các giai đoạn tiến triển của bệnh:
 <span style="color:#777">{@html ode_eqn}</span>
 Ngoài các động lực của sự lây truyền, mô hình này cho phép chỉnh thêm thông tin thời gian để mô hình hóa tỷ lệ tử vong và gánh nặng chăm sóc sức khỏe. 
 </p>
@@ -1107,7 +1107,7 @@ Một số kết quả ước tính cho các tham số dịch COVID-19 được 
 
 
 <p class="center">
-Xem [<a href="https://academic.oup.com/jtm/article/27/2/taaa021/5735319"> Liu et. al </a>] khảo sát chi tiết các ước tính hiện tại về hệ số lây lan. Các thông số về đặc điểm lâm sàng của bệnh được lấy từ <a href="https://www.who.int/docs/default-source/coronaviruse/who-china-joint-mission-on-covid-19-final-report.pdf">Báo cáo của WHO</a>. 
+Xem [<a href="https://academic.oup.com/jtm/article/27/2/taaa021/5735319">Liu et. al</a>] khảo sát chi tiết các ước tính hiện tại về hệ số lây lan. Các thông số về đặc điểm lâm sàng của bệnh được lấy từ <a href="https://www.who.int/docs/default-source/coronaviruse/who-china-joint-mission-on-covid-19-final-report.pdf">Báo cáo của WHO</a>. 
 </p>
 
 <p class="center">
@@ -1121,13 +1121,13 @@ Please DM me feedback <a href="https://twitter.com/gabeeegoooh">here</a> or emai
 
 <p class = "center">
 <b> Chi tiết về mô hình </b><br>
-Động lực lâm sàng trong mô hình này là một biến thể của SEIR nhằm mô phỏng sự tiến triển của dịch ở độ phân giải cao hơn, chia {@html math_inline("I,R")} thành <i>nhẹ</i> (bệnh nhân hồi phục mà không cần nhập viện), <i>vừa</i> (bệnh nhân cần nhập viện nhưng vẫn sống sót) và <i>tử vong</i> (bệnh nhân cần nhập viện và vẫn chết). Mỗi biến này đi theo quỹ đạo riêng của nó đến kết quả cuối cùng, và tổng của chúng cộng lại bằng với giá trị do SEIR dự đoán. Vui lòng tham khảo mã nguồn để biết chi tiết. Lưu ý là để đơn giản hóa, chúng tôi coi như tất cả các trường hợp tử vong đều đến từ các bệnh viện, và tất cả các trường hợp tử vong đều được đưa vào bệnh viện ngay sau thời kỳ lây nhiễm. (thực tế có khác: một số người có thể chết mà bệnh viện chưa kịp chữa cho họ)
+Động lực lâm sàng trong mô hình này là một biến thể của SEIR nhằm mô phỏng sự tiến triển của dịch ở độ phân giải cao hơn, chia {@html math_inline("I, R")} thành <i>nhẹ</i> (bệnh nhân hồi phục mà không cần nhập viện), <i>vừa</i> (bệnh nhân cần nhập viện nhưng vẫn sống sót) và <i>tử vong</i> (bệnh nhân cần nhập viện và vẫn chết). Mỗi biến này đi theo quỹ đạo riêng của nó đến kết quả cuối cùng, và tổng của chúng cộng lại bằng với giá trị do SEIR dự đoán. Vui lòng tham khảo mã nguồn để biết chi tiết. Lưu ý là để đơn giản hóa, chúng tôi coi như tất cả các trường hợp tử vong đều đến từ các bệnh viện, và tất cả các trường hợp tử vong đều được đưa vào bệnh viện ngay sau thời kỳ lây nhiễm. (thực tế có khác: một số người có thể chết mà bệnh viện chưa kịp chữa cho họ)
 </p>
 
 <p class = "center">
 <b> Cảm ơn các đóng góp </b><br>
-<a href = "https://enkimute.github.io/"> Steven De Keninck </a> cho hàm tính tích phân RK4. <a href="https://twitter.com/ch402"> Chris Olah </a>, <a href="https://twitter.com/shancarter"> Shan Carter
-</a> và <a href="https://twitter.com/ludwigschubert"> Ludwig Schubert
+<a href = "https://enkimute.github.io/">Steven De Keninck</a> cho hàm tính tích phân RK4. <a href="https://twitter.com/ch402">Chris Olah</a>, <a href="https://twitter.com/shancarter">Shan Carter
+</a> và <a href="https://twitter.com/ludwigschubert">Ludwig Schubert
 </a> vì sự phản hồi tuyệt vời. Charlie Huang cho bối cảnh và thảo luận.
 </p>
 
@@ -1135,7 +1135,7 @@ Please DM me feedback <a href="https://twitter.com/gabeeegoooh">here</a> or emai
 <div style="margin-bottom: 30px">
 
   <div class="center" style="padding: 10px; margin-top: 3px; width: 925px">
-    <div class="legendtext">Tham số được xuất:</div>
+    <div class="legendtext">Địa chỉ web kèm tham số:</div>
     <form>
       <textarea type="textarea" rows="1" cols="5000" style="white-space: nowrap;  overflow: auto; width:100%; text-align: left" id="fname" name="fname">{state}</textarea>
     </form>
