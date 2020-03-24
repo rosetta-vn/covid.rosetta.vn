@@ -9,7 +9,7 @@ In addition to the transmission dynamics, this model allows the use of supplemen
 Measure of contagiousness: the number of secondary infections each infected individual produces.
 A sampling of the estimates for epidemic parameters are presented below:
 </a> and <a href="https://twitter.com/ludwigschubert">Ludwig Schubert
-</a> wonderful feedback. Charlie Huang for context and discussion.
+</a> wonderful feedback. <a href="https://twitter.com/NikitaJer">Nikita Jerschov</a> for improving clarity of text. Charie Huang for context and discussion.
 Population no longer infectious due to isolation or immunity.
 Number of infections <i>actively</i> circulating.
 Time from end of incubation to death.

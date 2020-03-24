@@ -4,12 +4,12 @@ Lưu ý rằng ta cũng có thể sử dụng mô phỏng này để đo lườn
 Xem [<a href="https://academic.oup.com/jtm/article/27/2/taaa021/5735319">Liu et. al</a>] khảo sát chi tiết các ước tính hiện tại về hệ số lây lan. Các thông số về đặc điểm lâm sàng của bệnh được lấy từ <a href="https://www.who.int/docs/default-source/coronaviruse/who-china-joint-mission-on-covid-19-final-report.pdf">Báo cáo của WHO</a>.
 Tại thời điểm làm công cụ mô phỏng này, dịch bệnh COVID-19 vẫn là một cuộc khủng hoảng sức khỏe toàn cầu nghiêm trọng và mức độ chưa rõ ràng. Đối với người không phải là chuyên gia (như bản thân tôi), việc sắp xếp các con số, các dự báo và các thông số dịch tễ học từ các phương tiện truyền thông và tài liệu có thể không đơn giản. Tôi (Gabriel Goh) đã tạo ra trang web mô phỏng này để thu hẹp khoảng cách hiểu biết đó.
 <a href = "https://enkimute.github.io/">Steven De Keninck</a> cho hàm tính tích phân RK4. <a href="https://twitter.com/ch402">Chris Olah</a>, <a href="https://twitter.com/shancarter">Shan Carter
-Please DM me feedback <a href="https://twitter.com/gabeeegoooh">here</a> or email me <a href="mailto:izmegabe@gmail.com">here</a>. Trang <a href="http://gabgoh.github.io/">web của tôi</a>.
+Please DM author feedback <a href="https://twitter.com/gabeeegoooh">here</a> or email Gabriel <a href="mailto:izmegabe@gmail.com">here</a>. Author's <a href="http://gabgoh.github.io/">website</a>. Phản hồi cho người dịch qua <a href="https://www.facebook.com/dangdoan">tài khoản Facebook</a> hoặc <a href="mailto:minhdang@linux.com">email</a>. Mã nguồn trang tiếng Việt ở <a href="https://github.com/rosetta-vn/covid.rosetta.vn">Github repository</a>.
 Ngoài các động lực của sự lây truyền, mô hình này cho phép chỉnh thêm thông tin thời gian để mô hình hóa tỷ lệ tử vong và gánh nặng chăm sóc sức khỏe.
 Đo lường mức độ lây nhiễm: số lượng lây nhiễm thứ cấp mà mỗi cá nhân bị nhiễm bệnh tạo ra
 Một số kết quả ước tính cho các tham số dịch COVID-19 được trình bày dưới đây:
 </a> và <a href="https://twitter.com/ludwigschubert">Ludwig Schubert
-</a> vì sự phản hồi tuyệt vời. Charlie Huang cho bối cảnh và thảo luận.
+</a> cho sự phản hồi tuyệt vời. <a href="https://twitter.com/NikitaJer">Nikita Jerschov</a> để làm rõ câu chữ. Charlie Huang cho bối cảnh và thảo luận.
 Dân số không còn bị nhiễm do cách ly hoặc miễn dịch
 Số người <i>đang</i> mắc bệnh
 Thời gian từ sau khi ủ bệnh đến khi chết
